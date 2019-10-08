@@ -34,6 +34,6 @@ public class ImageLoader {
     }
 
     public void printImageArray(int[][] image) {
-        System.out.println(Arrays.deepToString(image));
+        System.out.println(Arrays.deepToString(image).replace("], ", "]\n"));
     }
 }
