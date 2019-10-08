@@ -1,6 +1,6 @@
 package test.java;
 
-import main.org.nyu.image.ImageLoader;
+import main.java.org.nyu.image.ImageLoader;
 import org.junit.Test;
 
 import java.io.File;

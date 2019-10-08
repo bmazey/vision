@@ -1,4 +1,4 @@
-package main.org.nyu.image;
+package main.java.org.nyu.image;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

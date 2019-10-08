@@ -1,6 +1,6 @@
-package main.org.nyu;
+package main.java.org.nyu;
 
-import main.org.nyu.image.ImageLoader;
+import main.java.org.nyu.image.ImageLoader;
 
 import java.io.File;
 
