@@ -17,11 +17,24 @@ public class GaussianSmoother {
         // TODO - starting at 3 because of size of mask, change to computation
         for(int i = 3; i < image.length; i++) {
             for(int j = 3; j < image[i].length; j++) {
-                filtered[i][j] = 0;
+
+                // this gives us image[i][j]
+                int sum = 0;
+
+                // inner loops iterate over mask
+                for (int k = 0; k < mask.length; k ++) {
+                    for (int m = 0; m < mask[k].length; m++) {
+                        // FIXME - this is wrong
+                        sum += image[i][j] * mask[k][m];
+                    }
+                }
+                // divide by sum of mask
+                // TODO - should we round or cast?
+                // TODO calculate sum of mask instead of using 140
+                filtered[i][j] = sum / 140;
             }
         }
 
-        // TODO - crop off undefined edges before returning
         return filtered;
     }
 }
