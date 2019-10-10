@@ -11,7 +11,7 @@ public class GaussianSmoother {
 
         // let's start by creating a new array which will contain our filtered image
         // TODO - change resizing to computation
-        int[][] filtered = new int[image.length - 3][image[0].length - 3];
+        int[][] filtered = new int[image.length][image[0].length];
 
         // iterate over the image and apply the convolution operation
         // TODO - starting at 3 because of size of mask, change to computation
