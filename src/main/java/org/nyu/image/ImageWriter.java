@@ -7,6 +7,7 @@ import java.io.File;
 
 public class ImageWriter {
 
+    // FIXME - build on top of existing name to produce unique images!
     public void write(int[][] image) throws Exception {
         BufferedImage buffered = new BufferedImage(image.length, image[0].length, BufferedImage.TYPE_BYTE_GRAY);
 

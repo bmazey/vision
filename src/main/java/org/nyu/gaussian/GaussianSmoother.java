@@ -22,7 +22,7 @@ public class GaussianSmoother {
                 int sum = 0;
 
                 // inner loops iterate over mask
-                for (int k = 0; k < mask.length; k ++) {
+                for (int k = 0; k < mask.length; k++) {
                     for (int m = 0; m < mask[k].length; m++) {
                         int xshift = k - 3;
                         int yshift = m - 3;
