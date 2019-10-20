@@ -25,13 +25,21 @@ public class VisionApplication {
         loader.printImageArray(smooth);
 
         ImageWriter writer = new ImageWriter();
-        writer.write(smooth);
+        writer.write(smooth, "gaussian-cat");
 
         // sobel's operator
         SobelOperator sobel = new SobelOperator();
+        double[][] xgradient = sobel.computeGxGradientMagnitude(smooth);
+        double[][] ygradient = sobel.computeGyGradientMagnitude(smooth);
         double[][] gradient = sobel.computeGradientMagnitude(smooth);
+
+        int[][] xnormalized = sobel.normalizeGradientImage(xgradient);
+        int[][] ynormalized = sobel.normalizeGradientImage(ygradient);
         int[][] normalized = sobel.normalizeGradientImage(gradient);
 
-        writer.write(normalized);
+        writer.write(xnormalized, "sobel-Gx-cat");
+        writer.write(ynormalized, "sobel-Gy-cat");
+        writer.write(normalized, "sobel-cat");
+
     }
 }

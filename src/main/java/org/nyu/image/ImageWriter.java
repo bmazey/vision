@@ -8,7 +8,7 @@ import java.io.File;
 public class ImageWriter {
 
     // FIXME - build on top of existing name to produce unique images!
-    public void write(int[][] image) throws Exception {
+    public void write(int[][] image, String filename) throws Exception {
         BufferedImage buffered = new BufferedImage(image.length, image[0].length, BufferedImage.TYPE_BYTE_GRAY);
 
         WritableRaster raster = buffered.getRaster();
@@ -18,7 +18,7 @@ public class ImageWriter {
             }
         }
 
-        File f = new File("C:\\workspace\\vision\\resources\\test.png");
+        File f = new File("C:\\workspace\\vision\\resources\\" + filename + ".png");
         ImageIO.write(buffered, "png", f);
     }
 }
