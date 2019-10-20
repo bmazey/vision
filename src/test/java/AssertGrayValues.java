@@ -1,6 +1,7 @@
 package test.java;
 
 import main.java.org.nyu.image.ImageLoader;
+import main.java.org.nyu.sobel.SobelOperator;
 import org.junit.Test;
 
 import java.io.File;
@@ -28,6 +29,28 @@ public class AssertGrayValues {
         for(int i = 0; i < image.length; i++) {
             for(int j = 0; j < image[i].length; j++) {
                 assertThat(image[i][j], is(both(greaterThanOrEqualTo(0))
+                        .and(lessThanOrEqualTo(255))));
+            }
+        }
+    }
+
+    @Test
+    public void assertGrayLevelValuesInNormalizedGradientImage() throws Exception {
+        File f = new File("C:\\workspace\\vision\\resources\\grayscale_cat.jpg");
+        ImageLoader loader = new ImageLoader();
+
+        // load image
+        int[][] image = loader.load(f);
+
+        SobelOperator sobel = new SobelOperator();
+
+        double[][] gradient = sobel.computeGradientMagnitude(image);
+        int[][] normalized = sobel.normalizeGradientImage(gradient);
+
+        // iterate over and assert each value is between 0 and 255
+        for(int i = 0; i < normalized.length; i++) {
+            for(int j = 0; j < normalized[i].length; j++) {
+                assertThat(normalized[i][j], is(both(greaterThanOrEqualTo(0))
                         .and(lessThanOrEqualTo(255))));
             }
         }

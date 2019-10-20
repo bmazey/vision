@@ -12,6 +12,7 @@ public class SobelOperator {
         double[][] gradient = new double[image.length][image[0].length];
 
         // TODO - compute padding, similar to GaussianSmoother. 1 comes from the sobel masks, 3 from gaussian
+        // TODO - split into two different functions for Gx image and Gy image!
         for(int i = 1 + 3; i < image.length - (1 + 3); i++) {
             for(int j = 1 + 3; j < image[i].length - (1 + 3); j++) {
 
@@ -49,7 +50,10 @@ public class SobelOperator {
         for(int i = 0; i < image.length; i++) {
             for(int j = 0; j < image[i].length; j++) {
                 // TODO compute size of Gx mask
-                normalized[i][j] = (int)Math.round(Math.abs(image[i][j]));
+                int normal = (int)Math.round(Math.abs(image[i][j]));
+
+                if (normal > 255) normalized[i][j] = 255;
+                else normalized[i][j] = normal;
             }
         }
 
