@@ -44,7 +44,8 @@ public class VisionApplication {
 
         // non-maxima suppression
         NonMaximaSuppressor suppressor = new NonMaximaSuppressor();
-        int[][] suppressed = suppressor.suppress(gradient, xgradient, ygradient);
+        double[][] theta = suppressor.computeGradientAngle(xgradient, ygradient);
+        int[][] suppressed = suppressor.suppress(gradient, theta);
         writer.write(suppressed, "maxima-zebra");
 
     }
