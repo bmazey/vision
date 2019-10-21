@@ -6,6 +6,7 @@ public class DoubleThresholder {
 
         int[][] threshold = new int[image.length][image[0].length];
 
+        // padding of one because we'll need to check 8-connected neighbors
         for(int i = 1; i < image.length - 1; i++) {
             for(int j = 1; j < image[i].length - 1; j++) {
 
