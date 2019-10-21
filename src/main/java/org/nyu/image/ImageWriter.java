@@ -18,7 +18,7 @@ public class ImageWriter {
             }
         }
 
-        File f = new File("C:\\workspace\\vision\\resources\\" + filename + ".png");
-        ImageIO.write(buffered, "png", f);
+        File f = new File("C:\\workspace\\vision\\resources\\" + filename + ".bmp");
+        ImageIO.write(buffered, "bmp", f);
     }
 }

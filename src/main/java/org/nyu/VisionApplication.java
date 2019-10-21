@@ -10,14 +10,14 @@ import java.io.File;
 public class VisionApplication {
     public static void main(String[] args) throws Exception {
         // TODO - load image as gray-level array
-        File f = new File("C:\\workspace\\vision\\resources\\grayscale_cat.jpg");
+        File f = new File("C:\\workspace\\vision\\resources\\Zebra-crossing-1.bmp");
         ImageLoader loader = new ImageLoader();
 
         // load image and print
         int[][] image = loader.load(f);
         // loader.printImageArray(image);
 
-        System.out.println("image length: " + image.length + " image width: " + image[0].length);
+        // System.out.println("image length: " + image.length + " image width: " + image[0].length);
 
         // gaussian smoothing
         GaussianSmoother smoother = new GaussianSmoother();
@@ -25,7 +25,7 @@ public class VisionApplication {
         loader.printImageArray(smooth);
 
         ImageWriter writer = new ImageWriter();
-        writer.write(smooth, "gaussian-cat");
+        writer.write(smooth, "gaussian-zebra");
 
         // sobel's operator
         SobelOperator sobel = new SobelOperator();
@@ -37,9 +37,9 @@ public class VisionApplication {
         int[][] ynormalized = sobel.normalizeGradientImage(ygradient);
         int[][] normalized = sobel.normalizeGradientImage(gradient);
 
-        writer.write(xnormalized, "sobel-Gx-cat");
-        writer.write(ynormalized, "sobel-Gy-cat");
-        writer.write(normalized, "sobel-cat");
+        writer.write(xnormalized, "sobel-Gx-zebra");
+        writer.write(ynormalized, "sobel-Gy-zebra");
+        writer.write(normalized, "sobel-zebra");
 
     }
 }
