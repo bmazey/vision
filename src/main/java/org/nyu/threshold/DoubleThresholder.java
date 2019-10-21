@@ -6,16 +6,20 @@ public class DoubleThresholder {
 
         int[][] threshold = new int[image.length][image[0].length];
 
-        for(int i = 0; i < image.length; i++) {
-            for(int j = 0; j < image[i].length; j++) {
+        for(int i = 1; i < image.length - 1; i++) {
+            for(int j = 1; j < image[i].length - 1; j++) {
 
                 if(image[i][j] < lower) {
                     threshold[i][j] = 0;
                 }
-                if(image[i][j] > upper) {
+                else if(image[i][j] > upper) {
                     threshold[i][j] = 255;
                 }
 
+                // TODO - final case for double threshold!
+                else {
+
+                }
 
             }
         }
