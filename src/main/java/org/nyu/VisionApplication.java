@@ -3,6 +3,7 @@ package main.java.org.nyu;
 import main.java.org.nyu.gaussian.GaussianSmoother;
 import main.java.org.nyu.image.ImageLoader;
 import main.java.org.nyu.image.ImageWriter;
+import main.java.org.nyu.nonmaxima.NonMaximaSuppressor;
 import main.java.org.nyu.sobel.SobelOperator;
 
 import java.io.File;
@@ -22,7 +23,7 @@ public class VisionApplication {
         // gaussian smoothing
         GaussianSmoother smoother = new GaussianSmoother();
         int[][] smooth = smoother.smooth(image);
-        loader.printImageArray(smooth);
+        // loader.printImageArray(smooth);
 
         ImageWriter writer = new ImageWriter();
         writer.write(smooth, "gaussian-zebra");
@@ -40,6 +41,11 @@ public class VisionApplication {
         writer.write(xnormalized, "sobel-Gx-zebra");
         writer.write(ynormalized, "sobel-Gy-zebra");
         writer.write(normalized, "sobel-zebra");
+
+        // non-maxima suppression
+        NonMaximaSuppressor suppressor = new NonMaximaSuppressor();
+        int[][] suppressed = suppressor.suppress(gradient, xgradient, ygradient);
+        writer.write(suppressed, "maxima-zebra");
 
     }
 }
