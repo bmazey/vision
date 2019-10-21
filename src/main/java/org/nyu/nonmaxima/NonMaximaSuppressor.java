@@ -16,9 +16,10 @@ public class NonMaximaSuppressor {
         int[][] suppressed = new int[image.length][image[0].length];
 
         // TODO compute padding: 3 from gaussian, 1 from sobel
-        for (int i = 3 + 1 + 1; i < image.length - (3 + 1 + 1); i++) {
-            for(int j = 3 + 1 + 1; j < image[i].length - (3 + 1 + 1); j++) {
+        for (int i = 3 + 1; i < image.length - (3 + 1); i++) {
+            for(int j = 3 + 1; j < image[i].length - (3 + 1); j++) {
 
+                // FIXME - resulting image is grainy :S
                 // compute arc tangent - don't forget to convert to degrees!
                 double angle;
 
