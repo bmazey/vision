@@ -19,10 +19,11 @@ public class NonMaximaSuppressor {
         for (int i = 3 + 1; i < image.length - (3 + 1); i++) {
             for(int j = 3 + 1; j < image[i].length - (3 + 1); j++) {
 
-                // FIXME - resulting image is grainy :S
+                // FIXME - resulting image is grainy ... this may be correct, not sure!
                 // compute arc tangent - don't forget to convert to degrees!
                 double angle;
 
+                // case for infinity and NaN
                 if(gyimage[i][j] != 0 && gximage[i][j] == 0) angle = 90.00;
                 else if(gyimage[i][j] == 0 && gximage[i][j] == 0) angle = 0.00;
                 else angle = Math.toDegrees(Math.atan(gyimage[i][j] / gximage[i][j]));
@@ -79,7 +80,7 @@ public class NonMaximaSuppressor {
         if((angle >= 67.5 && angle < 112.5) || (angle >= 247.5 && angle < 292.5)) sector = 2;
         if((angle >= 112.5 && angle < 157.5) || (angle >= 292.5 && angle < 337.5)) sector = 3;
 
-        if (sector == -1) System.out.println("ERROR!");
+        // if (sector == -1) System.out.println("ERROR!");
 
         return sector;
     }
