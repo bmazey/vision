@@ -5,6 +5,7 @@ import main.java.org.nyu.image.ImageLoader;
 import main.java.org.nyu.image.ImageWriter;
 import main.java.org.nyu.nonmaxima.NonMaximaSuppressor;
 import main.java.org.nyu.sobel.SobelOperator;
+import main.java.org.nyu.threshold.DoubleThresholder;
 
 import java.io.File;
 
@@ -47,6 +48,11 @@ public class VisionApplication {
         double[][] theta = suppressor.computeGradientAngle(xgradient, ygradient);
         int[][] suppressed = suppressor.suppress(gradient, theta);
         writer.write(suppressed, "maxima-zebra");
+
+        // double threshold
+        DoubleThresholder thresholder = new DoubleThresholder();
+        int[][] canny = thresholder.threshold(suppressed, gradient, theta, 100, 50);
+        writer.write(canny, "canny-zebra");
 
     }
 }
