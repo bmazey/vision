@@ -12,7 +12,7 @@ import java.io.File;
 public class VisionApplication {
     public static void main(String[] args) throws Exception {
         // TODO - load image as gray-level array
-        File f = new File("C:\\workspace\\vision\\resources\\Zebra-crossing-1.bmp");
+        File f = new File("C:\\workspace\\vision\\resources\\Houses-225.bmp");
         ImageLoader loader = new ImageLoader();
 
         // load image and print
@@ -27,7 +27,7 @@ public class VisionApplication {
         // loader.printImageArray(smooth);
 
         ImageWriter writer = new ImageWriter();
-        writer.write(smooth, "gaussian-zebra");
+        writer.write(smooth, "house-gaussian");
 
         // sobel's operator
         SobelOperator sobel = new SobelOperator();
@@ -39,20 +39,20 @@ public class VisionApplication {
         int[][] ynormalized = sobel.normalizeGradientImage(ygradient);
         int[][] normalized = sobel.normalizeGradientImage(gradient);
 
-        writer.write(xnormalized, "sobel-Gx-zebra");
-        writer.write(ynormalized, "sobel-Gy-zebra");
-        writer.write(normalized, "sobel-zebra");
+        writer.write(xnormalized, "house-sobel-Gx");
+        writer.write(ynormalized, "house-sobel-Gy");
+        writer.write(normalized, "house-sobel");
 
         // non-maxima suppression
         NonMaximaSuppressor suppressor = new NonMaximaSuppressor();
         double[][] theta = suppressor.computeGradientAngle(xgradient, ygradient);
         int[][] suppressed = suppressor.suppress(gradient, theta);
-        writer.write(suppressed, "maxima-zebra");
+        writer.write(suppressed, "house-maxima");
 
         // double threshold
         DoubleThresholder thresholder = new DoubleThresholder();
-        int[][] canny = thresholder.threshold(suppressed, gradient, theta, 100, 50);
-        writer.write(canny, "canny-zebra");
+        int[][] canny = thresholder.threshold(suppressed, gradient, theta, 60, 30);
+        writer.write(canny, "house-canny");
 
     }
 }

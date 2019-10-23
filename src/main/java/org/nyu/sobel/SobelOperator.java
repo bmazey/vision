@@ -106,6 +106,7 @@ public class SobelOperator {
         for(int i = 0; i < image.length; i++) {
             for(int j = 0; j < image[i].length; j++) {
                 // TODO compute size of Gx mask
+                // FIXME - divided by 3 because that is the size of the sobel mask?
                 int normal = (int)Math.round(Math.abs(image[i][j]));
 
                 if (normal > 255) normalized[i][j] = 255;
