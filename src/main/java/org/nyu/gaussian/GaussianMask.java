@@ -1,5 +1,8 @@
 package main.java.org.nyu.gaussian;
 
+
+import java.util.Arrays;
+
 public class GaussianMask {
 
     // this 7 x 7 static array will act as our gaussian mask
@@ -16,5 +19,19 @@ public class GaussianMask {
     // getter only as array is final
     public int[][] getMask() {
         return this.mask;
+    }
+
+    public int getMaskPadding() {
+        return this.mask[0].length / 2;
+    }
+
+    public int getSum() {
+        int sum = 0;
+        for(int i = 0; i < this.mask.length; i++) {
+            for(int j = 0; j < this.mask[i].length; j++) {
+                sum += this.mask[i][j];
+            }
+        }
+        return sum;
     }
 }

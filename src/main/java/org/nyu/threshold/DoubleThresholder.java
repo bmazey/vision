@@ -17,7 +17,6 @@ public class DoubleThresholder {
                     threshold[i][j] = 255;
                 }
 
-                // TODO - final case for double threshold!
                 else {
                     // assume 0
                     threshold[i][j] = 0;

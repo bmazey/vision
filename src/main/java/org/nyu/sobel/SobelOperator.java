@@ -1,8 +1,12 @@
 package main.java.org.nyu.sobel;
 
+import main.java.org.nyu.gaussian.GaussianMask;
+
 public class SobelOperator {
 
     private SobelMask mask = new SobelMask();
+    private GaussianMask gmask = new GaussianMask();
+    private int padding = mask.getMaskPadding() + gmask.getMaskPadding();
 
     public double[][] computeGradientMagnitude(int[][] image) {
 
@@ -13,8 +17,10 @@ public class SobelOperator {
 
         // TODO - compute padding, similar to GaussianSmoother. 1 comes from the sobel masks, 3 from gaussian
         // TODO - split into two different functions for Gx image and Gy image!
-        for(int i = 1 + 3; i < image.length - (1 + 3); i++) {
-            for(int j = 1 + 3; j < image[i].length - (1 + 3); j++) {
+
+
+        for(int i = padding; i < image.length - padding; i++) {
+            for(int j = padding; j < image[i].length - padding; j++) {
 
                 int xsum = 0;
 
@@ -51,8 +57,9 @@ public class SobelOperator {
 
         // TODO - compute padding, similar to GaussianSmoother. 1 comes from the sobel masks, 3 from gaussian
         // TODO - split into two different functions for Gx image and Gy image!
-        for(int i = 1 + 3; i < image.length - (1 + 3); i++) {
-            for(int j = 1 + 3; j < image[i].length - (1 + 3); j++) {
+
+        for(int i = padding; i < image.length - padding; i++) {
+            for(int j = padding; j < image[i].length - padding; j++) {
 
                 int sum = 0;
 
@@ -79,8 +86,9 @@ public class SobelOperator {
 
         // TODO - compute padding, similar to GaussianSmoother. 1 comes from the sobel masks, 3 from gaussian
         // TODO - split into two different functions for Gx image and Gy image!
-        for(int i = 1 + 3; i < image.length - (1 + 3); i++) {
-            for(int j = 1 + 3; j < image[i].length - (1 + 3); j++) {
+
+        for(int i = padding; i < image.length - padding; i++) {
+            for(int j = padding; j < image[i].length - padding; j++) {
 
                 int sum = 0;
 
@@ -105,12 +113,12 @@ public class SobelOperator {
 
         for(int i = 0; i < image.length; i++) {
             for(int j = 0; j < image[i].length; j++) {
-                // TODO compute size of Gx mask
-                // FIXME - divided by 3 because that is the size of the sobel mask?
-                int normal = (int)Math.round(Math.abs(image[i][j]));
 
-                if (normal > 255) normalized[i][j] = 255;
-                else normalized[i][j] = normal;
+                int normal = (int)Math.round(Math.abs(image[i][j]));
+                // assignment says to use the below, but this just appears to make the image darker ...
+                // int normal = (int)Math.round(Math.abs(image[i][j]) / 4);
+
+                normalized[i][j] = normal;
             }
         }
 

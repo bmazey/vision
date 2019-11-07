@@ -33,6 +33,7 @@ public class ImageLoader {
                 // FIXME - a way to assert grayscale?
                 // 0 is selected as third argument because image is assumed to be grayscale
                 // imageArray[i][j] = raster.getSample(i, j, 0);
+
                 imageArray[i][j] = image.getRGB(i, j) & 0xFF;
             }
         }

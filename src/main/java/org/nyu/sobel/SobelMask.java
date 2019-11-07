@@ -22,4 +22,8 @@ public class SobelMask {
     public int[][] getGy() {
         return this.Gy;
     }
+
+    public int getMaskPadding() {
+        return this.Gx[0].length / 2;
+    }
 }
