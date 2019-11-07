@@ -24,9 +24,9 @@ public class CannyEdgeDetector {
         this.lower = lower;
     }
 
-    public void detect() throws Exception {
+    public void detect(String path) throws Exception {
         // TODO - load image as gray-level array
-        File f = new File("C:\\workspace\\vision\\resources\\" + this.filename);
+        File f = new File(path + this.filename);
         ImageLoader loader = new ImageLoader();
 
         // load image and print
