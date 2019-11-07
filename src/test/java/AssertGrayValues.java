@@ -33,26 +33,4 @@ public class AssertGrayValues {
             }
         }
     }
-
-    @Test
-    public void assertGrayLevelValuesInNormalizedGradientImage() throws Exception {
-        File f = new File("C:\\workspace\\vision\\resources\\grayscale_cat.jpg");
-        ImageLoader loader = new ImageLoader();
-
-        // load image
-        int[][] image = loader.load(f);
-
-        SobelOperator sobel = new SobelOperator();
-
-        double[][] gradient = sobel.computeGradientMagnitude(image);
-        int[][] normalized = sobel.normalizeGradientImage(gradient);
-
-        // iterate over and assert each value is between 0 and 255
-        for(int i = 0; i < normalized.length; i++) {
-            for(int j = 0; j < normalized[i].length; j++) {
-                assertThat(normalized[i][j], is(both(greaterThanOrEqualTo(0))
-                        .and(lessThanOrEqualTo(255))));
-            }
-        }
-    }
 }
