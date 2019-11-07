@@ -54,7 +54,7 @@ public class CannyEdgeDetector {
 
         writer.write(xnormalized, this.edited + "-sobel-Gx");
         writer.write(ynormalized, this.edited + "-sobel-Gy");
-        writer.write(normalized, this.edited + "-sobel");
+        writer.write(normalized, this.edited + "-sobel-magnitude");
 
         // non-maxima suppression
         NonMaximaSuppressor suppressor = new NonMaximaSuppressor();
