@@ -1,8 +1,6 @@
 package main.java.org.nyu.gaussian;
 
 
-import java.util.Arrays;
-
 public class GaussianMask {
 
     // this 7 x 7 static array will act as our gaussian mask
