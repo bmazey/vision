@@ -6,6 +6,7 @@ import main.java.org.nyu.canny.CannyEdgeDetector;
 public class VisionApplication {
     public static void main(String[] args) throws Exception {
 
+        // specify base directory
         String path = "C:\\workspace\\vision\\resources\\";
 
         CannyEdgeDetector zebraDetector = new CannyEdgeDetector("Zebra-crossing-1.bmp", 60, 30);
