@@ -114,9 +114,10 @@ public class SobelOperator {
         for(int i = 0; i < image.length; i++) {
             for(int j = 0; j < image[i].length; j++) {
 
-                int normal = (int)Math.round(Math.abs(image[i][j]));
+                //int normal = (int)Math.round(Math.abs(image[i][j]));
+
                 // assignment says to use the below, but this just appears to make the image darker ...
-                // int normal = (int)Math.round(Math.abs(image[i][j]) / 4);
+                int normal = (int)Math.round(Math.abs(image[i][j]) / 4);
 
                 normalized[i][j] = normal;
             }
